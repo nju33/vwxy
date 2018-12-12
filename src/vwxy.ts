@@ -1,14 +1,11 @@
 const PATHS = 'paths';
 
-namespace vwxyOriginalFunction {
-  export let paths: (string | number)[];
-}
-
 const createFn = () => {
-  function vwxyOriginalFunction() {}
-  vwxyOriginalFunction.paths = [] as (string | number)[];
+  // tslint:disable-next-line:only-arrow-functions no-empty
+  const fn: {(): void; paths: (string | number)[]} = function() {};
+  fn.paths = [] as (string | number)[];
 
-  return vwxyOriginalFunction;
+  return fn;
 };
 
 export const vwxy = <
@@ -22,7 +19,7 @@ export const vwxy = <
 
       return new Proxy(target, this);
     },
-    apply(target, thisArg, argumentsList) {
+    apply(target, _thisArg, argumentsList) {
       const arg1 = argumentsList[0];
       const paths = Reflect.get(target, PATHS) as (string | number)[];
 
