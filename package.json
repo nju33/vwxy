@@ -1,10 +1,10 @@
 {
   "name": "vwxy",
-  "description": "",
+  "description": "A to get function",
   "version": "0.0.2",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
-  "umd:main": "dist/umd/index.js",
+  "umd:main": "vwxy.js",
   "types": "dist/types/index.d.ts",
   "source": "src/index.ts",
   "files": [
