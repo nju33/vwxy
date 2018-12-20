@@ -1,30 +1,35 @@
 # vwxy
 
-## Install
+A to get function.
 
-```sh
-yarn add vwxy
+## Usage
+
+````js
+/**
+ * To prepare of using the `vwxy`
+ * ```sh
+ * yarn add vwxy
+ * ```
+ */
+import vwxy from 'vwxy';
+````
+
+or
+
+```html
+<script src="https://unpkg.com/vwxy@0.0.3/vwxy.js"></script>
+<script>
+  // Can use the `vwxy` here.
+</script>
 ```
 
 ## Example
 
 ```ts
-import vwxy from 'vwxy';
-
 const value = vwxy().foo.bar.baz({
   foo: {bar: {baz: 33}},
 });
 console.log(value); // 33
-
-/**
- * @example
- * // with Generics
- * const value = vwxy<{
- *   foo: {bar: {baz(val: {foo: {bar: {baz: number}}}): number}};
- * }>().foo.bar.baz({
- *   foo: {bar: {baz: 33}},
- * });
- */
 
 const value = vwxy<{
   arr: {value(value: {arr: {value: string}[]}): string}[];
@@ -32,3 +37,13 @@ const value = vwxy<{
 
 console.log(value); // baz
 ```
+
+## Browsers
+
+|Browser|support|
+|:---|:---:|
+|IE|no|
+|Edge|ok|
+|Chrome|ok|
+|Firefox|ok|
+|Safari|ok|
