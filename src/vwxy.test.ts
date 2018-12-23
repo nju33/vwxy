@@ -1,19 +1,30 @@
-import {vwxy} from './vwxy';
+import {vwxy, VwxyValue} from './vwxy';
 
 test('basis', () => {
-  const value = vwxy<{
-    foo: {bar: {baz(val: {foo: {bar: {baz: number}}}): number}};
-  }>().foo.bar.baz({
-    foo: {bar: {baz: 33}},
-  });
+  const baz = vwxy<{
+    foo: {
+      bar: {
+        baz: VwxyValue<number>;
+      };
+    };
+  }>().foo.bar.baz(123);
 
-  expect(value).toBe(33);
+  expect(
+    baz({
+      foo: {bar: {baz: 33}},
+    }),
+  ).toBe(33);
+
+  expect(baz({foo: {xxx: 33}})).toBe(123);
 });
 
 test('with index', () => {
   const value = vwxy<{
-    arr: {value(value: {arr: {value: string}[]}): string}[];
-  }>().arr[1].value({arr: [{value: 'foo'}, {value: 'baz'}]});
+    arr: {
+      value: VwxyValue<string>;
+    }[];
+  }>().arr[1].value('bar');
 
-  expect(value).toBe('baz');
+  expect(value({arr: [{value: 'foo'}, {value: 'baz'}]})).toBe('baz');
+  expect(value({arr: [{value: 'foo'}]})).toBe('bar');
 });

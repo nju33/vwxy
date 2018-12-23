@@ -1,5 +1,13 @@
 const PATHS = 'paths';
 
+export interface VwxyObject<T> {
+  [x: string]: T | T[] | VwxyObject<T> | VwxyObject<T>[];
+}
+
+export type VwxyValue<T, O extends VwxyObject<T> = VwxyObject<T>> = (
+  defaultValue?: T,
+) => (val: O) => T;
+
 const createFn = () => {
   // tslint:disable-next-line:only-arrow-functions no-empty
   const fn: {(): void; paths: (string | number)[]} = function() {};
@@ -19,10 +27,16 @@ export const vwxy = <
       return receiver;
     },
     apply(target, _thisArg, argumentsList) {
-      const arg1 = argumentsList[0];
+      const defaultValue = argumentsList[0];
       const paths = target[PATHS];
 
-      return paths.reduce((result: any, path) => result[path], arg1);
+      return (object: any) => {
+        try {
+          return paths.reduce((result: any, path) => result[path], object);
+        } catch {
+          return defaultValue;
+        }
+      };
     },
   }) as any;
 };
