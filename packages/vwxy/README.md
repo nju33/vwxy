@@ -62,4 +62,4 @@ expect(value({arr: [{value: 'foo'}, {value: 'baz'}]})).toBe('baz');
 expect(value({arr: [{value: 'foo'}]})).toBe('bar');
 ```
 
-[![Edit example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vyzyjyl283?initialpath=src%2Findex.ts&module=%2Fsrc%2Findex.ts)
+[![Edit example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vyzyjyl283?module=%2Fsrc%2Findex.ts)
