@@ -1,7 +1,7 @@
 {
   "name": "vwxy",
   "description": "A to get function",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/main/index.js",
   "module": "dist/module/index.js",
   "umd:main": "vwxy.js",
