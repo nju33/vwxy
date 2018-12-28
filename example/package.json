@@ -5,6 +5,7 @@
   "description": "a vwxy example",
   "main": "index.html",
   "scripts": {
+    "test": ":",
     "start": "parcel index.html --open",
     "build": "parcel build index.html",
     "predeploy": "rm -rf .cache dist .DS_Store",

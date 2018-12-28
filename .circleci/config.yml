@@ -10,9 +10,9 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: yarn lerna exec -- yarn install
+      - run: yarn 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn lerna exec -- yarn test
+      - run: yarn .test
