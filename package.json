@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     ".docs": "lerna exec --scope vwxy -- yarn typedoc",
+    "pre.publish": "cp packages/vwxy/README.md README.md",
     ".publish": "lerna publish",
     "example.deploy": "lerna exec --scope example -- yarn deploy"
   },
