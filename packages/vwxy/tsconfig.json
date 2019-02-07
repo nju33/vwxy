@@ -1,3 +1,4 @@
 {
-  "extends": "@nju33/tsconfig-main"
+  "extends": "@nju33/tsconfig-main",
+  "include": ["src"]
 }
