@@ -32,7 +32,13 @@ export const vwxy = <
 
       return (object: any) => {
         try {
-          return paths.reduce((result: any, path) => result[path], object);
+          return paths.reduce((result: any, path) => {
+            if (!Object.prototype.hasOwnProperty.call(result, path)) {
+              throw new Error(`Do not have ${path}`);
+            }
+
+            return result[path];
+          }, object);
         } catch {
           return defaultValue;
         }

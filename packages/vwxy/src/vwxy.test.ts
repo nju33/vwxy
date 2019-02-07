@@ -28,3 +28,11 @@ test('with index', () => {
   expect(value({arr: [{value: 'foo'}, {value: 'baz'}]})).toBe('baz');
   expect(value({arr: [{value: 'foo'}]})).toBe('bar');
 });
+
+test('1 layer', () => {
+  const foo = vwxy().foo('foo');
+  const bar = vwxy().bar('bar');
+
+  expect(foo({})).toBe('foo');
+  expect(bar({bar: 'xxx'})).toBe('xxx');
+});
