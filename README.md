@@ -9,7 +9,7 @@ A to get function.
 [![document:typedoc](https://badgen.net/badge/document/typedoc/9602ff)](https://docs--vwxy.netlify.com/)
 [![license](https://badgen.net/npm/license/vwxy)](https://github.com/nju33/vwxy/blob/master/LICENSE)
 [![browserslist](https://badgen.net/badge/browserslist/chrome,edge/ffd539?list=1)](https://browserl.ist/?q=last+1+chrome+version%2C+last+1+edge+version)
-[![code style:prettier](https://badgen.net/badge//prettier/ff69b3?label=code%20style)](https://github.com/prettier/prettier)
+[![code style: prettier](https://badgen.net/badge//prettier/ff69b3?label=code%20style)](https://github.com/prettier/prettier)
 
 ## Usage
 
