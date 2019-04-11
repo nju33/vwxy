@@ -1,6 +1,6 @@
 import vwxy, {VwxyValue} from 'vwxy';
 
-(() => {
+((): void => {
   const baz = vwxy<{
     foo: {
       bar: {

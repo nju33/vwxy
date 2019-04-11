@@ -1,6 +1,6 @@
 import {vwxy, VwxyValue} from './vwxy';
 
-test('basis', () => {
+test('basis', (): void => {
   const baz = vwxy<{
     foo: {
       bar: {
@@ -18,7 +18,7 @@ test('basis', () => {
   expect(baz({foo: {xxx: 33}})).toBe(123);
 });
 
-test('with index', () => {
+test('with index', (): void => {
   const value = vwxy<{
     arr: {
       value: VwxyValue<string>;
@@ -29,7 +29,7 @@ test('with index', () => {
   expect(value({arr: [{value: 'foo'}]})).toBe('bar');
 });
 
-test('1 layer', () => {
+test('1 layer', (): void => {
   const foo = vwxy().foo('foo');
   const bar = vwxy().bar('bar');
 

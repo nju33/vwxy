@@ -8,9 +8,15 @@ export type VwxyValue<T, O extends VwxyObject<T> = VwxyObject<T>> = (
   defaultValue?: T,
 ) => (val: O) => T;
 
-const createFn = () => {
-  // tslint:disable-next-line:only-arrow-functions no-empty
-  const fn: {(): void; paths: (string | number)[]} = function() {};
+export interface VwxyCreateFn {
+  (): void;
+  paths: (string | number)[];
+}
+
+export type VwxyReturnFn = (object: {[x: string]: string | number}) => any;
+
+const createFn = (): VwxyCreateFn => {
+  const fn: {(): void; paths: (string | number)[]} = function(): void {};
   fn.paths = [] as (string | number)[];
 
   return fn;
@@ -20,19 +26,29 @@ export const vwxy = <
   T extends {[k: string]: any} = {[k: string]: any}
 >(): T => {
   return new Proxy<ReturnType<typeof createFn>>(createFn(), {
-    get(target, prop, receiver) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    get(target, prop, receiver): any {
       const paths = target[PATHS];
-      paths.push(prop as any);
+      if (typeof prop === 'symbol') {
+        throw new Error('Does not support Symbol');
+      }
+
+      paths.push(prop);
 
       return receiver;
     },
-    apply(target, _thisArg, argumentsList) {
+    apply(target, _thisArg, argumentsList): VwxyReturnFn {
       const defaultValue = argumentsList[0];
       const paths = target[PATHS];
 
-      return (object: any) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return (object: {
+        [x: string]: string | number;
+      }): ReturnType<VwxyReturnFn> => {
         try {
-          return paths.reduce((result: any, path) => {
+          return paths.reduce((result: {[x: string]: string | number}, path):
+            | ReturnType<VwxyReturnFn>
+            | {[x: string]: string | number} => {
             if (!Object.prototype.hasOwnProperty.call(result, path)) {
               throw new Error(`Do not have ${path}`);
             }
