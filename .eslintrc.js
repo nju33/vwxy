@@ -7,13 +7,13 @@ module.exports = {
   extends: [
     'xo-space',
     'xo-space/esnext',
-		'plugin:prettier/recommended',
+    'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
   rules: {
-		// ts と prettier 間で修正がループする
-		'indent': 'off',
-    '@typescript-eslint/indent': 'off'
+    // Ts と prettier 間で修正がループする
+    indent: 'off',
+    '@typescript-eslint/indent': 'off',
   },
   env: {
     es6: true,
