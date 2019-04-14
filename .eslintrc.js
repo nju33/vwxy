@@ -1,26 +1,29 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    sourceType: 'module',
-  },
-  plugins: ['@typescript-eslint', 'prettier', 'jest'],
-  extends: [
-    'xo-space',
-    'xo-space/esnext',
-    'plugin:prettier/recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
-  rules: {
-    // Ts と prettier 間で修正がループする
-    indent: 'off',
-    '@typescript-eslint/indent': 'off',
-  },
+  plugins: ['@typescript-eslint', 'jest'],
   env: {
-    es6: true,
+    node: true,
     browser: true,
     'jest/globals': true,
   },
-  settings: {
-    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+  extends: [
+    'xo-space',
+    'xo-space/esnext',
+    'xo-space/browser',
+    'plugin:jest/recommended',
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  rules: {
+    // `@param`に`{type}`や`@returns`の必須を無効に
+    "valid-jsdoc": 0,
+    // eslint の`no-unused-vars`では`interface`などが扱えないので
+    // eslint 側のルールは無効化し、 ts-eslint のルールを使う
+    "no-unused-vars": 0,
+    "@typescript-eslint/no-unused-vars": 2,
+    // prettier に任せる
+    indent: 0,
+    "@typescript-eslint/indent": 0
   },
 };

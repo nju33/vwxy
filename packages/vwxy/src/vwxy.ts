@@ -1,5 +1,11 @@
 const PATHS = 'paths';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export interface VwxyDictionary {
+  [k: string]: any;
+}
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
 export interface VwxyObject<T> {
   [x: string]: T | T[] | VwxyObject<T> | VwxyObject<T>[];
 }
@@ -13,6 +19,7 @@ export interface VwxyCreateFn {
   paths: (string | number)[];
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type VwxyReturnFn = (object: {[x: string]: string | number}) => any;
 
 const createFn = (): VwxyCreateFn => {
@@ -22,9 +29,7 @@ const createFn = (): VwxyCreateFn => {
   return fn;
 };
 
-export const vwxy = <
-  T extends {[k: string]: any} = {[k: string]: any}
->(): T => {
+export const vwxy = <T extends VwxyDictionary = VwxyDictionary>(): T => {
   return new Proxy<ReturnType<typeof createFn>>(createFn(), {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     get(target, prop, receiver): any {
@@ -60,5 +65,5 @@ export const vwxy = <
         }
       };
     },
-  }) as any;
+  }) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 };

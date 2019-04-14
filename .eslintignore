@@ -1,2 +1,10 @@
 dist/
 node_modules/
+*.toml
+*.md
+*.json
+*.yml
+*.html
+*.lock
+LICENSE
+vwxy.js
