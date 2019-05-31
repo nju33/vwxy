@@ -54,6 +54,6 @@
     "lint-staged": "8.1.7",
     "prettier": "1.17.1",
     "renovate-config-nju33": "0.0.1",
-    "typescript": "3.4.5"
+    "typescript": "3.5.1"
   }
 }
