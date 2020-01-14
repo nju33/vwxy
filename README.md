@@ -2,7 +2,7 @@
 
 A to get function.
 
-[![github](https://badgen.net/badge//nju33,vwxy/000?icon=github&list=1)](https://github.com/nju33/vwxy)
+[![github](https://badgen.net/badge/nju33/vwxy/000?icon=github)](https://github.com/nju33/vwxy)
 [![npm:version](https://badgen.net/npm/v/vwxy?icon=npm&label=)](https://www.npmjs.com/package/vwxy)
 [![typescript](https://badgen.net/badge/lang/typescript/0376c6?icon=npm)](https://www.typescriptlang.org/)
 [![ci:status](https://badgen.net/circleci/github/nju33/vwxy)](https://circleci.com/gh/nju33/vwxy)
